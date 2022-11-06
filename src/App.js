@@ -3,21 +3,21 @@ import React, { useState } from "react";
 import TodoList from "./TodoList";
 import AddTodoForm from "./AddTodoForm";
 
-// array of to do list items (used to be in TodoList.js)
-const todos = [
-  // {
-  //   id: 1,
-  //   title: "Complete assignment",
-  // },
-  // {
-  //   id: 2,
-  //   title: "Learn some React baby",
-  // },
-  // {
-  //   id: 3,
-  //   title: "Take a job-well-done nap?",
-  // },
-];
+// Previous array of to do list items (used to be in TodoList.js), commented out partially at first, then at GitHub commenter's request (11/4/22) i commented it all out.
+// const todos = [
+//   // {
+//   //   id: 1,
+//   //   title: "Complete assignment",
+//   // },
+//   // {
+//   //   id: 2,
+//   //   title: "Learn some React baby",
+//   // },
+//   // {
+//   //   id: 3,
+//   //   title: "Take a job-well-done nap?",
+//   // },
+// ];
 
 // APP COMPONENT / FUNCTION//////////////////////////////////////////////////////
 function App() {
@@ -25,8 +25,8 @@ function App() {
   // Below sets new to do's. Creates a new state variable named `newTodo` with update function named `setNewTodo` (with useState hook)
   // const [newTodo, setNewTodo] = useState("");
 
-  // Below stores ALL to do's. Creates new state variable called "todoList" w/"setter" called "setTodoList" w/"todos" array as default value. This was "lifting state" step.
-  const [todoList, setTodoList] = useState(todos);
+  // Below stores ALL to do's. Creates new state variable called "todoList" w/"setter" called "setTodoList" w/an empty array as default value (was "todos" prior to that, but then had recommended to change to empty array). This was "lifting state" step.
+  const [todoList, setTodoList] = useState([]);
 
   // Instruction from 1-4: "Declare a new function named `addTodo` that takes `newTodo` as a parameter. Call the `setTodoList` state setter and use the spread operator to pass the existing Objects in the `todoList` Array along with the `newTodo` Object."
   const addTodo = (newTodo) => {
