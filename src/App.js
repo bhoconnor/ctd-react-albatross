@@ -30,8 +30,8 @@ const useSemiPersistentState = () => {
 
   // Below stores ALL to do's. Creates new state variable called "todoList" w/"setter" called "setTodoList" w/an empty array as default value (was "todos" prior to that, but then had recommended to change to empty array). This was "lifting state" step.
   const [todoList, setTodoList] = useState(
-    // Instructions: "Update the default state for `todoList` to read your `"savedTodoList"` item from `localStorage`. Then update your default state to parse the value of the `"savedTodoList"` item.
-    JSON.parse(savedTodoListToParse)
+    // Instructions: "Update the default state for `todoList` to read your `"savedTodoList"` item from `localStorage`. Then update your default state to parse the value of the `"savedTodoList"` item. Also had to add or statement || followed by empty bracket, so when the local storage is cleared & therefore empty, it still works.
+    JSON.parse(savedTodoListToParse) || []
   );
 
   // Instructions from 1-5: "Define a `useEffect` React hook with `todoList` as a dependency; inside the side-effect handler function, save the `todoList` inside `localStorage` with the key `"savedTodoList"` "
@@ -43,14 +43,26 @@ const useSemiPersistentState = () => {
   return [todoList, setTodoList];
 };
 
+// ************************************************************************************************************************ //
 // APP COMPONENT / FUNCTION//////////////////////////////////////////////////////
+// ************************************************************************************************************************ //
 function App() {
-  // Instruction from 1-5: "Update `App` to use the new custom hook. Hint: Copy the `useState` hook from before, but change `useState` to the custom hook `useSemiPersistentState` (no arguments)"
+  //  "Update `App` to use new custom hook. Hint: Copy `useState` hook from before, but change `useState` to custom hook `useSemiPersistentState` (no arguments)" (Lesson 1-5)
   const [todoList, setTodoList] = useSemiPersistentState("savedTodoList");
 
-  // Instruction from 1-4: "Declare a new function named `addTodo` that takes `newTodo` as a parameter. Call the `setTodoList` state setter and use the spread operator to pass the existing Objects in the `todoList` Array along with the `newTodo` Object."
+  // "Declare new function named `addTodo` that takes `newTodo` as parameter. Call `setTodoList` state setter & use spread operator to pass existing Objects in `todoList` Array along with `newTodo` Object." (Lesson 1-4)
   const addTodo = (newTodo) => {
     setTodoList([...todoList, newTodo]);
+  };
+
+  // RE: BELOW: Try to see if removeTodo function below works withOUT parts of comment in brackets--if so, remove those parts in brackets.
+
+  // Handler function to remove a to do list item ("todoItem") with a given ID from the to do list list if "Remove" button is clicked for that ID (using button in TodoListItem.js)
+  const removeTodo = (id) => {
+    const newArray = todoList.filter((todoItem) => id !== todoItem.id);
+
+    setTodoList(newArray);
+    console.log("newArray: ", newArray);
   };
 
   return (
@@ -58,11 +70,15 @@ function App() {
     <>
       <header style={{ textAlign: "center" }}>
         <h1>To do list</h1>
-        {/* Instructions from 1-4: "Change the value of the `onAddTodo` prop for `AddTodoForm` to `addTodo`" */}
+        {/* ************************************************************************************************************************ */}
+        {/* Instantiation of AddTodoForm */}
+        {/* "Change the value of the `onAddTodo` prop for `AddTodoForm` to `addTodo`" (Lesson 1-4) */}
         <AddTodoForm onAddTodo={addTodo} />
-        {/* paragraph element that displays value of `newTodo` variable, removed for lesson 1-4 */}
+        {/* Paragraph element that displays value of `newTodo` variable (Lesson 1-4) */}
         {/* <p>{newTodo}</p> */}
-        <TodoList todos={todoList} />
+        {/* ************************************************************************************************************************ */}
+        {/* Instantiation of TodoList */}
+        <TodoList todos={todoList} onRemoveTodo={removeTodo} />
       </header>
     </>
   );

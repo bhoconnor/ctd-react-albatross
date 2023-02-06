@@ -1,6 +1,9 @@
 import React, { useState } from "react";
+import InputWithLabel from "./InputWithLabel";
 
+// ************************************************************************************************************************ //
 // ADD TO DO FORM COMPONENT / FUNCTION//////////////////////////////////////////////////////
+// ************************************************************************************************************************ //
 const AddTodoForm = ({ onAddTodo }) => {
   // new state variable with setter or state updater function called "setTodoTitle" (Note from error i got from browser when the below was not in this component function: "React Hook "useState" cannot be called at the top level. React Hooks must be called in a React function component or a custom React Hook function  react-hooks/rules-of-hooks")
   const [todoTitleValue, setTodoTitle] = useState("");
@@ -15,7 +18,7 @@ const AddTodoForm = ({ onAddTodo }) => {
   const handleAddTodo = (addToDoEvent) => {
     // prevent form from refreshing
     addToDoEvent.preventDefault();
-    // Instructions from 1-4 for below: "Inside `handleAddTodo`, update the `onAddTodo` callback prop to pass an Object instead of a String; Object should have the following properties:
+    // Lesson 1-4 instructions for below: "Inside `handleAddTodo`, update the `onAddTodo` callback prop to pass an Object instead of a String; Object should have the following properties:
 
     // 1) 'title`: equal to `todoTitle (or 'todoTitleValue' in our case)`;
     // 2) `id`: unique identifier (hint: use `Date.now()` to generate a unique number). Disclaimer: we are suggesting `Date.now()` for now as a placeholder for unique number generation, but in the future you should not use this"
@@ -24,20 +27,25 @@ const AddTodoForm = ({ onAddTodo }) => {
     const onAddTodoObject = { title: todoTitleValue, id: Date.now() };
 
     onAddTodo(onAddTodoObject);
+
     // reset the form after submission
     setTodoTitle("");
   };
 
   return (
-    // passes handleAddTodo function from above when form is submitted
+    // Passes handleAddTodo function from above when form is submitted
     <form onSubmit={handleAddTodo}>
-      <label htmlFor="todoTitle">Title</label>
-      <input
-        id="todoTitle"
-        name="title"
-        value={todoTitleValue}
-        onChange={handleTitleChange}
-      ></input>
+      {/* {todoTitleValue}
+      {handleTitleChange} */}
+      {/* //
+      ******************************************************************************************************************
+      // Instantiation of InputWithLabel (Lesson 1.6)// */}
+      <InputWithLabel
+        todoTitleValue={todoTitleValue}
+        handleTitleChange={handleTitleChange}
+      >
+        Title
+      </InputWithLabel>
       <button>Add</button>
     </form>
   );

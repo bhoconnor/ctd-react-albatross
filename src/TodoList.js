@@ -2,17 +2,28 @@
 import React from "react";
 import TodoListItem from "./TodoListItem";
 
+// ************************************************************************************************************************ //
 // TO DO LIST COMPONENT / FUNCTION//////////////////////////////////////////////////////
+// ************************************************************************************************************************ //
 // map across to do list array to show each array item after each other in an unordered list
-const TodoList = ({ todos }) => {
+const TodoList = ({ todos, onRemoveTodo }) => {
   return (
-    <ul>
+    // Used React-specific syntax for style below to align list left
+    <ul style={{ textAlign: "left" }}>
       {/* Taco is parameter below (I think) */}
       {todos.map(function (taco) {
         // Below uses the key of the id for each TodoListItems to cycle through the todoList array
 
-        // Q: THAT SAID, WHAT DOES item={taco} DO, JUST DEFINE item AS THE JAVASCRIPT taco (SINCE TodoListItem.js USES "item" FOR THE TO DO LIST ITEM TITLE?? AND/OR IS IT FOR SOME REASON PASSING taco AS A PROP, AND IF SO WHY?
-        return <TodoListItem key={taco.id} item={taco} />;
+        // ************************************************************************************************************************
+        // Instantiation of TodoListItem
+        return (
+          <TodoListItem
+            key={taco.id}
+            todoID={taco.id}
+            item={taco}
+            onRemoveTodo={onRemoveTodo}
+          />
+        );
       })}
     </ul>
   );
