@@ -1,19 +1,16 @@
-# Using the app
+# Prerequisites
 
-- Run yarn start to launch to-do list app
+Install Yarn [(details here)](https://classic.yarnpkg.com/en/docs/install)
 
----
+# Instructions to run
 
-# Class details:
+1. In terminal, run `yarn start`
+2. In browser navigate to http://localhost:3000
 
-# Welcome to the Albatross React Class!
+--
 
-### During class you will be building **TWO** React apps...
+# Overview
 
-The **FIRST** will be a **BLOG APP** that you build while working through the class textbook.
-The blog app you will create completely from scratch following the book instructions. _You should keep your work for the blog app in a separate repository._
+This project was bootstrapped with **[Create React App](https://github.com/facebook/create-react-app)**.
 
-The **SECOND** will be a **TO-DO LIST APP** that you will build as extra coding practice during your coding assignments throughout the class.
-
-**[Click here](https://github.com/Code-the-Dream-School/ctd-react-albatross/wiki) to redirect to the Wiki for this repository.  
-Read the Project Setup section and then follow the link to the General Instructions to get started.**
+This to-do list app is being created as a part of the bootcamp I'm finishing with **Code the Dream School** (https://github.com/Code-the-Dream-School).

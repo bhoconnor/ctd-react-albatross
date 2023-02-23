@@ -21,7 +21,7 @@ const AddTodoForm = ({ onAddTodo }) => {
     // Lesson 1-4 instructions for below: "Inside `handleAddTodo`, update the `onAddTodo` callback prop to pass an Object instead of a String; Object should have the following properties:
 
     // 1) 'title`: equal to `todoTitle (or 'todoTitleValue' in our case)`;
-    // 2) `id`: unique identifier (hint: use `Date.now()` to generate a unique number). Disclaimer: we are suggesting `Date.now()` for now as a placeholder for unique number generation, but in the future you should not use this"
+    // 2) `id`: unique identifier (used `Date.now()` to generate a unique number). Also used `Date.now()` for now as a placeholder for unique number generation, but in the future should not use this"
 
     // Previous instruction for below: Invoke the `onAddTodo` callback handler prop (which points to the App.js instantiation of this AddTodoForm component) & pass `todoTitle` as argument
     const onAddTodoObject = { title: todoTitleValue, id: Date.now() };
