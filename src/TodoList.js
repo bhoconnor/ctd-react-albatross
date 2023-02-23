@@ -10,7 +10,7 @@ const TodoList = ({ todos, onRemoveTodo }) => {
   return (
     // Used React-specific syntax for style below to align list left
     <ul style={{ textAlign: "left" }}>
-      {/* Taco is parameter below (I think) */}
+      {/* "taco" is just parameter below */}
       {todos.map(function (taco) {
         // Below uses the key of the id for each TodoListItems to cycle through the todoList array
 
