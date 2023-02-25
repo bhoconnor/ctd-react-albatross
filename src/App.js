@@ -2,13 +2,7 @@
 import React, { useEffect, useState } from "react";
 import TodoList from "./TodoList";
 import AddTodoForm from "./AddTodoForm";
-
-// ************************************************************************************************************************ //
-// CUSTOM HOOK (useSemiPersistentState) ///////////////////////////////////////////////////////////////
-// ************************************************************************************************************************ //
-
-// savedTodoListToParse was to feed into JSON.parse as the default todoList useState value, changed in 1-7 to feed into mimicking of async data fetching via useEffect hook in App component.
-const savedTodoListToParse = localStorage.getItem("savedTodoList");
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 // ************************************************************************************************************************ //
 // APP COMPONENT / FUNCTION//////////////////////////////////////////////////////
@@ -18,10 +12,7 @@ function App() {
   // STATE: Various situations dealing with State below
 
   // Below stores ALL to do's. Creates new state variable called "todoList" w/"setter" called "setTodoList" w/an empty array as default value (was "todos" prior to that, but then had recommended to change to empty array). This was previously a part of "lifting state" step.
-  const [todoList, setTodoList] = useState(
-    // Updated  default state for todoList to read "savedTodoList" item from localStorage. Then updated default state to parse  value of the "savedTodoList" item. Also had to add or statement || followed by empty bracket, so when local storage is cleared & therefore empty, it still works.
-    []
-  );
+  const [todoList, setTodoList] = useState([]);
 
   // For dealing w/State when data is loading
   const [isLoading, setIsLoading] = useState(true);
@@ -46,10 +37,10 @@ function App() {
       });
   }, []);
 
-  // 2nd useEffect hook, defined with todoList as a dependency; inside the side-effect handler function, saved todoList inside localStorage with the key "savedTodoList" (Lesson 1-5); changed so only sets localStorage if isLoading is false (1-7).
+  // 2nd useEffect hook, defined with todoList as a dependency; inside the side-effect handler function, saved todoList inside localStorage with the key "savedTodoList" (Lesson 1-5); changed so only sets localStorage if isLoading is false (1-7); replaced "savedTodoList" with "todoList" after changed to actual API.
   useEffect(() => {
     if (isLoading === false) {
-      localStorage.setItem("savedTodoList", JSON.stringify(todoList));
+      localStorage.setItem("todoList", JSON.stringify(todoList));
     }
   }, [todoList]);
 
@@ -69,24 +60,35 @@ function App() {
     console.log("newArray: ", newArray);
   };
 
+  // Added BrowserRouter component, Routes component, & 2 Route components (Lesson 1-9)
   return (
-    // Made below into React fragments, changing <div> </div> tags to just <> </>
-    <>
-      <header style={{ textAlign: "center" }}>
-        <h1>To do list</h1>
-        {/* ************************************************************************************************************************ */}
-        {/* Instantiation of AddTodoForm */}
-        {/* "Change the value of the `onAddTodo` prop for `AddTodoForm` to `addTodo`" (Lesson 1-4) */}
-        <AddTodoForm onAddTodo={addTodo} />
-        {isLoading ? (
-          <p style={{ textAlign: "left" }}>Loading...</p>
-        ) : (
-          // ************************************************************************************************************************
-          // Instantiation of TodoList
-          <TodoList todos={todoList} onRemoveTodo={removeTodo} />
-        )}
-      </header>
-    </>
+    <BrowserRouter>
+      <Routes>
+        <Route
+          path="/"
+          exact
+          element={
+            <>
+              <header style={{ textAlign: "center" }}>
+                <h1>To do list</h1>
+                {/* ************************************************************************************************************************ */}
+                {/* Instantiation of AddTodoForm */}
+                {/* "Change the value of the `onAddTodo` prop for `AddTodoForm` to `addTodo`" (Lesson 1-4) */}
+                <AddTodoForm onAddTodo={addTodo} />
+                {isLoading ? (
+                  <p style={{ textAlign: "left" }}>Loading...</p>
+                ) : (
+                  // ************************************************************************************************************************
+                  // Instantiation of TodoList
+                  <TodoList todos={todoList} onRemoveTodo={removeTodo} />
+                )}
+              </header>
+            </>
+          }
+        />
+        <Route path="/new" exact element={<h1>New Todo List</h1>} />
+      </Routes>
+    </BrowserRouter>
   );
 }
 
