@@ -2,7 +2,20 @@
 import React, { useEffect, useState } from "react";
 import TodoList from "./TodoList";
 import AddTodoForm from "./AddTodoForm";
+// Navigation / Router support
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+// CSS Modules stylesheet
+import style from "./TodoListItem.module.css";
+// DECIDED NOT TO USE FOR NOW: CSS Styled Components
+// import styled from "styled-components";
+
+// DECIDED NOT TO USE FOR NOW: Variables for CSS Styled Components
+// const Heading1 = styled.h1`
+//   font-size: 5em;
+//   font-family: fantasy, serif;
+//   color: black;
+//   margin-bottom: 0.0001em;
+// `;
 
 // ************************************************************************************************************************ //
 // APP COMPONENT / FUNCTION//////////////////////////////////////////////////////
@@ -32,17 +45,19 @@ function App() {
     )
       .then((resp) => resp.json())
       .then((result) => {
-        setTodoList([...result.records]);
+        setTodoList([...(result.records || [])]);
         setIsLoading(false);
       });
   }, []);
 
+  // console.log(process.env.REACT_APP_AIRTABLE_API_KEY);
+
   // 2nd useEffect hook, defined with todoList as a dependency; inside the side-effect handler function, saved todoList inside localStorage with the key "savedTodoList" (Lesson 1-5); changed so only sets localStorage if isLoading is false (1-7); replaced "savedTodoList" with "todoList" after changed to actual API.
   useEffect(() => {
-    if (isLoading === false) {
+    if (!isLoading) {
       localStorage.setItem("todoList", JSON.stringify(todoList));
     }
-  }, [todoList]);
+  }, [todoList, isLoading]);
 
   // "Declare new function named `addTodo` that takes `newTodo` as parameter. Call `setTodoList` state setter & use spread operator to pass existing Objects in `todoList` Array along with `newTodo` Object." (Lesson 1-4)
   const addTodo = (newTodo) => {
@@ -68,9 +83,9 @@ function App() {
           path="/"
           exact
           element={
-            <>
+            <div className={style.container}>
               <header style={{ textAlign: "center" }}>
-                <h1>To do list</h1>
+                <h1 className={style.h1}>B's to do list</h1>
                 {/* ************************************************************************************************************************ */}
                 {/* Instantiation of AddTodoForm */}
                 {/* "Change the value of the `onAddTodo` prop for `AddTodoForm` to `addTodo`" (Lesson 1-4) */}
@@ -83,7 +98,7 @@ function App() {
                   <TodoList todos={todoList} onRemoveTodo={removeTodo} />
                 )}
               </header>
-            </>
+            </div>
           }
         />
         <Route path="/new" exact element={<h1>New Todo List</h1>} />

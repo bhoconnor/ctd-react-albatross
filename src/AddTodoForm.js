@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import InputWithLabel from "./InputWithLabel";
+import style from "./TodoListItem.module.css";
+import cs from "classnames";
 
 // ************************************************************************************************************************ //
 // ADD TO DO FORM COMPONENT / FUNCTION//////////////////////////////////////////////////////
@@ -44,9 +46,9 @@ const AddTodoForm = ({ onAddTodo }) => {
         todoTitleValue={todoTitleValue}
         handleTitleChange={handleTitleChange}
       >
-        Title
+        I'd like to...
       </InputWithLabel>
-      <button>Add</button>
+      <button className={cs(style.button, style.buttonLarge)}>+</button>
     </form>
   );
 };
