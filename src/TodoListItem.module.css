@@ -1,0 +1,204 @@
+/* Built container to put around whole page */
+.container {
+  height: 100vw;
+  /* padding: 5%; */
+
+  /* Flex & center items in container
+  display: flex; */
+
+  /* Background & other colors */
+  background: rgb(175, 226, 48);
+  background: radial-gradient(rgb(175, 226, 48), rgb(227, 175, 32));
+
+  /* Image fixed in viewport so doesn't move when content's height is greater than image's height */
+  /* background-attachment: fixed; */
+  /* Background image */
+  background-repeat: no-repeat;
+  /* background-position: 50% 5%; */
+  background-image: url("/img/tree_of_life.png");
+  /* Image rescales based on container's size */
+  background-size: cover;
+
+  /* Overall font */
+  font-family: fantasy, serif;
+  color: rgba(0, 0, 0, 0.714);
+}
+
+/* Main Header */
+.h1 {
+  font-size: 2.5em;
+  font-family: fantasy, serif;
+  color: black;
+  margin-bottom: 0.0001em;
+  padding-top: 0.5em;
+}
+
+/* Input box label & name/value */
+.labelName {
+  font-size: 1.25em;
+  margin-right: 0.5em;
+}
+.inputName {
+  color: rgb(92, 67, 4);
+}
+
+/* To do List item formatting */
+.listItem {
+  display: flex;
+  align-items: center;
+  color: rgb(117, 86, 8);
+  margin: 0.35em 0;
+  margin-left: 1%;
+  margin-right: 10%;
+  padding-left: 5px;
+  font-size: 1em;
+  border: dashed gray;
+  background-color: rgba(211, 211, 211, 0.5);
+}
+
+/* Buttons */
+.button {
+  background-color: orange;
+  color: rgb(92, 67, 4);
+  border: 1px solid rgb(92, 67, 4);
+  padding: 1px;
+  margin: 10px;
+  cursor: pointer;
+
+  font-family: fantasy, serif;
+
+  transition: all 0.1s ease-in;
+  transform: translateY(4px);
+}
+
+.button:hover {
+  background-color: rgb(195, 134, 19);
+}
+/* 
+.button:active {
+  background-color: rgb(195, 134, 19);
+  transform: translateY(4px);
+} */
+
+.buttonLarge {
+  height: 25px;
+  width: 25px;
+  font-size: 1.1em;
+  border-radius: 50%;
+  font-weight: bolder;
+}
+
+.buttonSmall {
+  height: 25px;
+  width: 25px;
+  font-size: 0.6em;
+  border-radius: 50%;
+  font-weight: bolder;
+  background-image: url("/img/xButton.png");
+}
+
+/* ================================= 
+  Media Queries
+==================================== */
+/* Tried below for laptops, didn't work, keep temporarily */
+
+/* .container { */
+/* height: 100vw; */
+/* padding: 150px; */
+/* width: 12%;
+    height: auto; */
+/* }
+
+/* for laptops *****************************/
+@media screen and (min-width: 950px) {
+  .container {
+    height: 100vw;
+    padding: 150px;
+
+    /* Background image */
+    /* Image fixed in viewport so doesn't move when content's height is greater than image's height */
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    background-position: 50% 5%;
+    background-image: url("/img/tree_of_life.png");
+    background-size: auto;
+
+    /* Overall font */
+    font-family: fantasy, serif;
+    color: rgba(0, 0, 0, 0.714);
+  }
+
+  /* Main Header */
+  .h1 {
+    font-size: 5em;
+    font-family: fantasy, serif;
+    color: black;
+    margin-top: 0em;
+    margin-bottom: 0.0001em;
+    padding-top: 0em;
+  }
+
+  /* Input box label & name/value */
+  .labelName {
+    font-size: 1.75em;
+    margin-right: 0.5em;
+  }
+  .inputName {
+    color: rgb(92, 67, 4);
+  }
+
+  /* To do List item formatting */
+  .listItem {
+    display: flex;
+    align-items: center;
+    color: rgb(117, 86, 8);
+    margin: 0.5em 0;
+    margin-left: 150px;
+    margin-right: 225px;
+    padding-left: 10px;
+    font-size: 1.5em;
+    border: medium dashed gray;
+    background-color: rgba(211, 211, 211, 0.5);
+  }
+
+  /* Buttons */
+  .button {
+    background-color: orange;
+    color: rgb(92, 67, 4);
+    border: 1px solid rgb(92, 67, 4);
+    padding: 1px;
+    margin: 10px;
+    cursor: pointer;
+
+    font-family: fantasy, serif;
+
+    transition: all 0.1s ease-in;
+    transform: translateY(4px);
+  }
+
+  .button:hover {
+    background-color: rgb(195, 134, 19);
+  }
+  /* 
+  .button:active {
+    background-color: rgb(195, 134, 19);
+    transform: translateY(4px);
+  } */
+
+  .buttonLarge {
+    height: 25px;
+    width: 25px;
+    font-size: 1.1em;
+    border-radius: 50%;
+    font-weight: bolder;
+  }
+
+  .buttonSmall {
+    height: 25px;
+    width: 25px;
+    font-size: 0.6em;
+    border-radius: 50%;
+    font-weight: bolder;
+    background-image: url("/img/xButton.png");
+  }
+}

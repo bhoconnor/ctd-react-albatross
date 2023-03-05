@@ -1,4 +1,5 @@
 import React, { useRef, useEffect } from "react";
+import style from "./TodoListItem.module.css";
 
 // ************************************************************************************************************************ //
 // InputWithLabel COMPONENT / FUNCTION//////////////////////////////////////////////////////
@@ -18,7 +19,9 @@ const InputWithLabel = ({ todoTitleValue, handleTitleChange, children }) => {
 
   return (
     <>
-      <label htmlFor="todoTitle">{children}</label>
+      <label htmlFor="todoTitle" className={style.labelName}>
+        {children}
+      </label>
       <input
         id="todoTitle"
         name="title"
@@ -26,6 +29,7 @@ const InputWithLabel = ({ todoTitleValue, handleTitleChange, children }) => {
         onChange={handleTitleChange}
         // B: Pass React useRef hook ("inputRef") to JSX-reserved ref attribute (Lesson 1.6)
         ref={inputRef}
+        className={style.inputName}
       ></input>
     </>
   );
