@@ -1,11 +1,11 @@
 // {useState} below allows to avoid typing "React.useState" when creating a variable
 import React, { useEffect, useState } from "react";
-import TodoList from "./TodoList";
-import AddTodoForm from "./AddTodoForm";
+import TodoList from "./components/TodoList";
+import AddTodoForm from "./components/AddTodoForm";
 // Navigation / Router support
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 // CSS Modules stylesheet
-import style from "./TodoListItem.module.css";
+import style from "./components/TodoListItem.module.css";
 // DECIDED NOT TO USE FOR NOW: CSS Styled Components
 // import styled from "styled-components";
 
@@ -24,7 +24,7 @@ function App() {
   // ************************************************************************************************************************ //
   // STATE: Various situations dealing with State below
 
-  // Below stores ALL to do's. Creates new state variable called "todoList" w/"setter" called "setTodoList" w/an empty array as default value (was "todos" prior to that, but then had recommended to change to empty array). This was previously a part of "lifting state" step.
+  // Below stores ALL to do's. Creates new state variable called "todoList" w/setter of "setTodoList", w/an empty array as default value (was "todos" prior to that, but then had recommendation to change to empty array). This was previously a part of "lifting state" step.
   const [todoList, setTodoList] = useState([]);
 
   // For dealing w/State when data is loading

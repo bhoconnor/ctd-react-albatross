@@ -1,6 +1,8 @@
 /* Built container to put around whole page */
 .container {
   height: 100vw;
+  max-width: 100%;
+  padding-bottom: 5%;
   /* padding: 5%; */
 
   /* Flex & center items in container
@@ -17,7 +19,7 @@
   /* background-position: 50% 5%; */
   background-image: url("/img/tree_of_life.png");
   /* Image rescales based on container's size */
-  background-size: cover;
+  background-size: contain;
 
   /* Overall font */
   font-family: fantasy, serif;
@@ -36,22 +38,33 @@
 /* Input box label & name/value */
 .labelName {
   font-size: 1.25em;
-  margin-right: 0.5em;
+  margin-right: 0.4em;
 }
 .inputName {
   color: rgb(92, 67, 4);
 }
 
-/* To do List item formatting */
+/* To do List OVERALL formatting */
+.ul {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  text-align: left;
+  padding-bottom: 5%;
+}
+
+/* To do List ITEM formatting */
 .listItem {
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
   color: rgb(117, 86, 8);
   margin: 0.35em 0;
   margin-left: 1%;
   margin-right: 10%;
+  padding: 1px;
   padding-left: 5px;
-  font-size: 1em;
+  font-size: 0.8em;
   border: dashed gray;
   background-color: rgba(211, 211, 211, 0.5);
 }
@@ -62,7 +75,6 @@
   color: rgb(92, 67, 4);
   border: 1px solid rgb(92, 67, 4);
   padding: 1px;
-  margin: 10px;
   cursor: pointer;
 
   font-family: fantasy, serif;
@@ -74,17 +86,13 @@
 .button:hover {
   background-color: rgb(195, 134, 19);
 }
-/* 
-.button:active {
-  background-color: rgb(195, 134, 19);
-  transform: translateY(4px);
-} */
 
 .buttonLarge {
   height: 25px;
   width: 25px;
   font-size: 1.1em;
   border-radius: 50%;
+  margin: 10px;
   font-weight: bolder;
 }
 
@@ -94,6 +102,10 @@
   font-size: 0.6em;
   border-radius: 50%;
   font-weight: bolder;
+  margin-top: 4px;
+  margin-bottom: 11px;
+  margin-left: 10px;
+  margin-right: 5px;
   background-image: url("/img/xButton.png");
 }
 
@@ -112,93 +124,35 @@
 /* for laptops *****************************/
 @media screen and (min-width: 950px) {
   .container {
-    height: 100vw;
-    padding: 150px;
+    padding: 100px;
 
     /* Background image */
     /* Image fixed in viewport so doesn't move when content's height is greater than image's height */
     background-attachment: fixed;
     background-repeat: no-repeat;
-    background-position: 50% 5%;
-    background-image: url("/img/tree_of_life.png");
+    background-position: 50% -5%;
     background-size: auto;
-
-    /* Overall font */
-    font-family: fantasy, serif;
-    color: rgba(0, 0, 0, 0.714);
   }
 
   /* Main Header */
   .h1 {
     font-size: 5em;
-    font-family: fantasy, serif;
-    color: black;
     margin-top: 0em;
-    margin-bottom: 0.0001em;
     padding-top: 0em;
   }
 
   /* Input box label & name/value */
   .labelName {
     font-size: 1.75em;
-    margin-right: 0.5em;
-  }
-  .inputName {
-    color: rgb(92, 67, 4);
   }
 
   /* To do List item formatting */
   .listItem {
-    display: flex;
-    align-items: center;
-    color: rgb(117, 86, 8);
+    flex-wrap: nowrap;
     margin: 0.5em 0;
     margin-left: 150px;
-    margin-right: 225px;
-    padding-left: 10px;
+    margin-right: 184px;
+    padding: 5px;
     font-size: 1.5em;
-    border: medium dashed gray;
-    background-color: rgba(211, 211, 211, 0.5);
-  }
-
-  /* Buttons */
-  .button {
-    background-color: orange;
-    color: rgb(92, 67, 4);
-    border: 1px solid rgb(92, 67, 4);
-    padding: 1px;
-    margin: 10px;
-    cursor: pointer;
-
-    font-family: fantasy, serif;
-
-    transition: all 0.1s ease-in;
-    transform: translateY(4px);
-  }
-
-  .button:hover {
-    background-color: rgb(195, 134, 19);
-  }
-  /* 
-  .button:active {
-    background-color: rgb(195, 134, 19);
-    transform: translateY(4px);
-  } */
-
-  .buttonLarge {
-    height: 25px;
-    width: 25px;
-    font-size: 1.1em;
-    border-radius: 50%;
-    font-weight: bolder;
-  }
-
-  .buttonSmall {
-    height: 25px;
-    width: 25px;
-    font-size: 0.6em;
-    border-radius: 50%;
-    font-weight: bolder;
-    background-image: url("/img/xButton.png");
   }
 }
