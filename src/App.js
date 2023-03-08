@@ -37,7 +37,8 @@ function App() {
 
   useEffect(() => {
     fetch(
-      `https://api.airtable.com/v0/${process.env.REACT_APP_AIRTABLE_BASE_ID}/Default?view=Grid%20view&sort[0][field]=Title&sort[0][direction]=asc`,
+      // Sorts according to order in Airtable (can add &sort[0][field]=Title&sort[0][direction]=asc to fetch url to sort by alpha ascending, or just un-comment JS code below)
+      `https://api.airtable.com/v0/${process.env.REACT_APP_AIRTABLE_BASE_ID}/Default?view=Grid%20view`,
       {
         headers: {
           Authorization: `Bearer ${process.env.REACT_APP_AIRTABLE_API_KEY}`,
@@ -45,17 +46,17 @@ function App() {
       }
     )
       .then((resp) => resp.json())
-      // Sort in descending order
       .then((result) => {
-        result.records.sort(function (objectA, objectB) {
-          if (objectA.fields.Title < objectB.fields.Title) {
-            return 1;
-          } else if (objectA.fields.Title > objectB.fields.Title) {
-            return -1;
-          } else {
-            return 0;
-          }
-        });
+        // // Sort in descending order
+        // result.records.sort(function (objectA, objectB) {
+        //   if (objectA.fields.Title < objectB.fields.Title) {
+        //     return -1;
+        //   } else if (objectA.fields.Title > objectB.fields.Title) {
+        //     return 1;
+        //   } else {
+        //     return 0;
+        //   }
+        // });
         setTodoList([...(result.records || [])]);
         setIsLoading(false);
       });
