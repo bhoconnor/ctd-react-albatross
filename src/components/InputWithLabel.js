@@ -3,9 +3,9 @@ import style from "./TodoListItem.module.css";
 // For typechecking props
 import PropTypes from "prop-types";
 
-// ************************************************************************************************************************ //
-// InputWithLabel COMPONENT / FUNCTION//////////////////////////////////////////////////////
-// ************************************************************************************************************************ //
+/* *********************************************************** */
+// InputWithLabel COMPONENT / FUNCTION/////////////////////////////////////////
+/* *********************************************************** */
 
 const InputWithLabel = ({ todoTitleValue, handleTitleChange, children }) => {
   // Moved below from AddToDoForm.js into multi-line return (which is just "return", then "(", then some kind of <div>, then various lines of code, closed with a ")" (Lesson 1.6)
