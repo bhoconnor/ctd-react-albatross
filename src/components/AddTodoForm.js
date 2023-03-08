@@ -6,9 +6,9 @@ import cs from "classnames";
 // For typechecking props
 import PropTypes from "prop-types";
 
-// ************************************************************************************************************************ //
-// ADD TO DO FORM COMPONENT / FUNCTION//////////////////////////////////////////////////////
-// ************************************************************************************************************************ //
+/* *********************************************************** */
+// ADD TO DO FORM COMPONENT / FUNCTION///////////////////////////////////////
+/* *********************************************************** */
 const AddTodoForm = ({ onAddTodo }) => {
   // New state variable with setter or state updater function called "setTodoTitle" (Note: React Hooks must be called in React function component or a custom React Hook function)
   const [todoTitleValue, setTodoTitle] = useState("");
@@ -39,16 +39,19 @@ const AddTodoForm = ({ onAddTodo }) => {
     <form onSubmit={handleAddTodo}>
       {/* {todoTitleValue}
       {handleTitleChange} */}
-      {/* //
-      ******************************************************************************************************************
+      {/* ******************************************************************
       // Instantiation of InputWithLabel (Lesson 1.6)// */}
-      <InputWithLabel
-        todoTitleValue={todoTitleValue}
-        handleTitleChange={handleTitleChange}
-      >
-        I'd like to...
-      </InputWithLabel>
-      <button className={cs(style.button, style.buttonLarge)}>+</button>
+      <span style={{ width: "93%" }}>
+        <InputWithLabel
+          todoTitleValue={todoTitleValue}
+          handleTitleChange={handleTitleChange}
+        >
+          I'd like to...
+        </InputWithLabel>
+      </span>
+      <span style={{ width: "7%" }}>
+        <button className={cs(style.button, style.buttonLarge)}> x</button>
+      </span>
     </form>
   );
 };

@@ -1,12 +1,13 @@
+/* *********************************************************** */
+/* CONTAINER */
+/* *********************************************************** */
+
 /* Built container to put around whole page */
 .container {
   height: 100vw;
   max-width: 100%;
   padding-bottom: 5%;
   /* padding: 5%; */
-
-  /* Flex & center items in container
-  display: flex; */
 
   /* Background & other colors */
   background: rgb(175, 226, 48);
@@ -26,6 +27,26 @@
   color: rgba(0, 0, 0, 0.714);
 }
 
+/* ********************* MEDIA QUERY - Laptops  ********************* */
+/* Container *****************************/
+@media screen and (min-width: 950px) {
+  .container {
+    padding: 100px;
+    padding-bottom: 0px;
+
+    /* Background image */
+    /* Image fixed in viewport so doesn't move when content's height is greater than image's height */
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    background-position: 50% -5%;
+    background-size: auto;
+  }
+}
+
+/* *********************************************************** */
+/* HEADER & ADD TO DO BOX */
+/* *********************************************************** */
+
 /* Main Header */
 .h1 {
   font-size: 2.5em;
@@ -44,13 +65,42 @@
   color: rgb(92, 67, 4);
 }
 
+/* ********************* MEDIA QUERY - Laptops  ********************* */
+/* Header & label *****************************/
+@media screen and (min-width: 950px) {
+  /* Main Header */
+  .h1 {
+    font-size: 5em;
+    margin-top: 0em;
+    padding-top: 0em;
+  }
+
+  /* Add To Do box label & name/value */
+  .labelName {
+    font-size: 1.75em;
+  }
+}
+
+/* *********************************************************** */
+/* LIST */
+/* *********************************************************** */
+
 /* To do List OVERALL formatting */
 .ul {
   display: flex;
   flex-wrap: wrap;
   flex-direction: column;
   text-align: left;
-  padding-bottom: 5%;
+  padding-bottom: 10%;
+}
+
+/* ********************* MEDIA QUERY - Laptops  ********************* */
+/* ul *****************************/
+@media screen and (min-width: 950px) {
+  /* ul */
+  .ul {
+    padding-bottom: 5%;
+  }
 }
 
 /* To do List ITEM formatting */
@@ -64,17 +114,34 @@
   margin-right: 10%;
   padding: 1px;
   padding-left: 5px;
+  padding-right: 25px;
   font-size: 0.8em;
   border: dashed gray;
   background-color: rgba(211, 211, 211, 0.5);
 }
 
-/* Buttons */
+/* ********************* MEDIA QUERY - Laptops  ********************* */
+/* List item *****************************/
+@media screen and (min-width: 950px) {
+  /* To do List item formatting */
+  .listItem {
+    flex-wrap: nowrap;
+    margin: 0.5em 0;
+    margin-left: 150px;
+    margin-right: 184px;
+    padding: 5px;
+    font-size: 1.5em;
+  }
+}
+
+/* *********************************************************** */
+/* BUTTONS */
+/* *********************************************************** */
+
 .button {
   background-color: orange;
   color: rgb(92, 67, 4);
   border: 1px solid rgb(92, 67, 4);
-  padding: 1px;
   cursor: pointer;
 
   font-family: fantasy, serif;
@@ -92,8 +159,15 @@
   width: 25px;
   font-size: 1.1em;
   border-radius: 50%;
+  padding-left: 5px;
+  /* padding-right: 0.3px;
+  padding-top: 0px;
+  padding-bottom: 3px; */
   margin: 10px;
   font-weight: bolder;
+  vertical-align: middle;
+  rotate: 45deg;
+  line-height: 25px;
 }
 
 .buttonSmall {
@@ -102,57 +176,10 @@
   font-size: 0.6em;
   border-radius: 50%;
   font-weight: bolder;
+  padding: 1px;
   margin-top: 4px;
   margin-bottom: 11px;
   margin-left: 10px;
   margin-right: 5px;
-  background-image: url("/img/xButton.png");
-}
-
-/* ================================= 
-  Media Queries
-==================================== */
-/* Tried below for laptops, didn't work, keep temporarily */
-
-/* .container { */
-/* height: 100vw; */
-/* padding: 150px; */
-/* width: 12%;
-    height: auto; */
-/* }
-
-/* for laptops *****************************/
-@media screen and (min-width: 950px) {
-  .container {
-    padding: 100px;
-
-    /* Background image */
-    /* Image fixed in viewport so doesn't move when content's height is greater than image's height */
-    background-attachment: fixed;
-    background-repeat: no-repeat;
-    background-position: 50% -5%;
-    background-size: auto;
-  }
-
-  /* Main Header */
-  .h1 {
-    font-size: 5em;
-    margin-top: 0em;
-    padding-top: 0em;
-  }
-
-  /* Input box label & name/value */
-  .labelName {
-    font-size: 1.75em;
-  }
-
-  /* To do List item formatting */
-  .listItem {
-    flex-wrap: nowrap;
-    margin: 0.5em 0;
-    margin-left: 150px;
-    margin-right: 184px;
-    padding: 5px;
-    font-size: 1.5em;
-  }
+  /* background-image: url("/img/xButton.png"); */
 }

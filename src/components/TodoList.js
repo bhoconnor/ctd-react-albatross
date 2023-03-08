@@ -5,9 +5,9 @@ import style from "./TodoListItem.module.css";
 // For typechecking props
 import PropTypes from "prop-types";
 
-// ************************************************************************************************************************ //
-// TO DO LIST COMPONENT / FUNCTION//////////////////////////////////////////////////////
-// ************************************************************************************************************************ //
+/* *********************************************************** */
+// TO DO LIST COMPONENT / FUNCTION/////////////////////////////////////////
+/* *********************************************************** */
 // map across to do list array to show each array item after each other in an unordered list
 const TodoList = ({ todos, onRemoveTodo }) => {
   return (
@@ -17,7 +17,7 @@ const TodoList = ({ todos, onRemoveTodo }) => {
       {todos.map(function (taco) {
         // Below uses the key of the id for each TodoListItems to cycle through the todoList array
 
-        // ************************************************************************************************************************
+        /* *********************************************************** */
         // Instantiation of TodoListItem
         return (
           <TodoListItem
