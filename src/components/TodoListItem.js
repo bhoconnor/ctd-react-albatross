@@ -9,7 +9,6 @@ import PropTypes from "prop-types";
 //TO DO LIST ITEM FORM COMPONENT / FUNCTION/////////////////////////////////
 /* *********************************************************** */
 const TodoListItem = ({ item, onRemoveTodo, todoID }) => {
-  console.log("item:", item, "item type:", typeof item);
   return (
     <li key={todoID} className={style.listItem}>
       {/* Changed below from {item.title} to item.fields.Title in 1-8 */}

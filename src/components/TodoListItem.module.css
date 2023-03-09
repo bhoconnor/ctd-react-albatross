@@ -1,4 +1,135 @@
 /* *********************************************************** */
+/* ************************************** */
+/* HOME PAGE **********/
+/* ************************************** */
+/* *********************************************************** */
+
+/* Header - Home page */
+.h1HomePage {
+  font-size: 2em;
+  font-family: fantasy, serif;
+  color: black;
+  margin-bottom: 0.0001em;
+  padding-top: 1em;
+}
+
+/* Laptop styling  ********************/
+@media screen and (min-width: 950px) {
+  .h1HomePage {
+    font-size: 5em;
+    margin-top: 0em;
+    padding-top: 0.5em;
+  }
+}
+
+/* Horizontal line */
+.hr {
+  width: 70%;
+  margin-top: -5px;
+  margin-bottom: 10px;
+}
+
+/* Laptop styling  ********************/
+@media screen and (min-width: 950px) {
+  .hr {
+    margin-top: -5px;
+    margin-bottom: 10px;
+  }
+}
+
+/* To put line break after "YOU" in header on mobile view */
+.headerPart1::after {
+  content: "\a";
+  white-space: pre;
+}
+
+/* Laptop styling  ********************/
+@media screen and (min-width: 950px) {
+  .headerPart1::after {
+    content: "\a";
+    white-space: nowrap;
+  }
+}
+
+/* Subheader & quote container */
+.subheaderAndQuoteContainer {
+  width: 95%;
+  border-radius: 25px;
+  margin-left: 2.5%;
+  margin-right: 2.5%;
+  padding-top: 1px;
+  padding-bottom: 5px;
+  background-color: rgba(211, 211, 211, 0.5);
+}
+
+/* Laptop styling  ********************/
+@media screen and (min-width: 950px) {
+  .subheaderAndQuoteContainer {
+    width: 80%;
+    border-radius: 25px;
+    margin-left: 10%;
+    margin-right: 10%;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    background-color: rgba(211, 211, 211, 0.5);
+  }
+}
+
+/* Sub-Header home page*/
+.h3 {
+  width: 95%;
+  font-size: 1.15em;
+  margin-left: 2.5%;
+  margin-right: 2.5%;
+  margin-bottom: 0.0001em;
+}
+
+/* Laptop styling  ********************/
+@media screen and (min-width: 950px) {
+  .h3 {
+    width: 75%;
+    font-size: 2.25em;
+    margin-left: 12.5%;
+    margin-right: 12.5%;
+    margin-top: 0em;
+  }
+}
+
+/* Quote */
+.quote {
+  font-size: 1em;
+  margin-bottom: 0.0001em;
+  padding-top: 0.5em;
+  color: rgb(117, 86, 8);
+}
+
+/* Quote */
+/* Laptop styling  ********************/
+@media screen and (min-width: 950px) {
+  .quote {
+    font-size: 1.4em;
+    margin-bottom: 0.0001em;
+    padding-top: 0.5em;
+    color: rgb(117, 86, 8);
+  }
+}
+
+/* To put line break after link in quote */
+/* Laptop styling  ********************/
+@media screen and (min-width: 950px) {
+  .lineBreak::after {
+    content: "\a";
+    white-space: pre;
+  }
+}
+
+/* *********************************************************** */
+/* ************************************** */
+/* TO DO LIST PAGE **********/
+/* ************************************** */
+/* *********************************************************** */
+
+/* *********************************************************** */
 /* CONTAINER */
 /* *********************************************************** */
 
@@ -27,8 +158,7 @@
   color: rgba(0, 0, 0, 0.714);
 }
 
-/* ********************* MEDIA QUERY - Laptops  ********************* */
-/* Container *****************************/
+/* Laptop styling  ********************/
 @media screen and (min-width: 950px) {
   .container {
     padding: 100px;
@@ -47,13 +177,22 @@
 /* HEADER & ADD TO DO BOX */
 /* *********************************************************** */
 
-/* Main Header */
-.h1 {
-  font-size: 2.5em;
+/* Header - To do List page */
+.h1ToDoPage {
+  font-size: 2.25em;
   font-family: fantasy, serif;
   color: black;
   margin-bottom: 0.0001em;
   padding-top: 0.5em;
+}
+
+/* Laptop styling  ********************/
+@media screen and (min-width: 950px) {
+  .h1ToDoPage {
+    font-size: 5em;
+    margin-top: 0em;
+    padding-top: 0em;
+  }
 }
 
 /* Input box label & name/value */
@@ -61,24 +200,17 @@
   font-size: 1.25em;
   margin-right: 0.4em;
 }
-.inputName {
-  color: rgb(92, 67, 4);
-}
 
-/* ********************* MEDIA QUERY - Laptops  ********************* */
-/* Header & label *****************************/
+/* Laptop styling  ********************/
 @media screen and (min-width: 950px) {
-  /* Main Header */
-  .h1 {
-    font-size: 5em;
-    margin-top: 0em;
-    padding-top: 0em;
-  }
-
   /* Add To Do box label & name/value */
   .labelName {
     font-size: 1.75em;
   }
+}
+
+.inputName {
+  color: rgb(92, 67, 4);
 }
 
 /* *********************************************************** */
@@ -86,6 +218,7 @@
 /* *********************************************************** */
 
 /* To do List OVERALL formatting */
+/* ul */
 .ul {
   display: flex;
   flex-wrap: wrap;
@@ -94,11 +227,12 @@
   padding-bottom: 10%;
 }
 
-/* ********************* MEDIA QUERY - Laptops  ********************* */
-/* ul *****************************/
+/* Laptop styling  ********************/
 @media screen and (min-width: 950px) {
   /* ul */
   .ul {
+    padding-left: 30px;
+    padding-right: 30px;
     padding-bottom: 5%;
   }
 }
@@ -120,18 +254,39 @@
   background-color: rgba(211, 211, 211, 0.5);
 }
 
-/* ********************* MEDIA QUERY - Laptops  ********************* */
-/* List item *****************************/
+/* Laptop styling  ********************/
 @media screen and (min-width: 950px) {
   /* To do List item formatting */
   .listItem {
     flex-wrap: nowrap;
     margin: 0.5em 0;
-    margin-left: 150px;
+    margin-left: 182px;
     margin-right: 184px;
     padding: 5px;
+    padding-left: 10px;
     font-size: 1.5em;
   }
+}
+
+/* *********************************************************** */
+/* LINKS */
+/* *********************************************************** */
+
+/* Link styling */
+.appLink {
+  color: rgb(210, 143, 17);
+}
+
+.appLink:visited {
+  color: rgb(210, 143, 17);
+}
+
+.appLink:hover {
+  color: rgb(150, 104, 20);
+}
+
+.appLink:focus {
+  color: rgb(150, 104, 20);
 }
 
 /* *********************************************************** */

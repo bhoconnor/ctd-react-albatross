@@ -6,16 +6,6 @@ import AddTodoForm from "./components/AddTodoForm";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 // CSS Modules stylesheet
 import style from "./components/TodoListItem.module.css";
-// DECIDED NOT TO USE FOR NOW: CSS Styled Components
-// import styled from "styled-components";
-
-// DECIDED NOT TO USE FOR NOW: Variables for CSS Styled Components
-// const Heading1 = styled.h1`
-//   font-size: 5em;
-//   font-family: fantasy, serif;
-//   color: black;
-//   margin-bottom: 0.0001em;
-// `;
 
 /* *********************************************************** */
 // APP COMPONENT / FUNCTION//////////////////////////////////////////////////////
@@ -40,6 +30,7 @@ function App() {
       // Sorts according to order in Airtable (can add &sort[0][field]=Title&sort[0][direction]=asc to fetch url to sort by alpha ascending, or just un-comment JS code below)
       `https://api.airtable.com/v0/${process.env.REACT_APP_AIRTABLE_BASE_ID}/Default?view=Grid%20view`,
       {
+        method: "GET",
         headers: {
           Authorization: `Bearer ${process.env.REACT_APP_AIRTABLE_API_KEY}`,
         },
@@ -47,26 +38,21 @@ function App() {
     )
       .then((resp) => resp.json())
       .then((result) => {
-        // // Sort in descending order
-        // result.records.sort(function (objectA, objectB) {
-        //   if (objectA.fields.Title < objectB.fields.Title) {
-        //     return -1;
-        //   } else if (objectA.fields.Title > objectB.fields.Title) {
-        //     return 1;
-        //   } else {
-        //     return 0;
-        //   }
-        // });
+        // Sort in descending order
+        result.records.sort(function (objectA, objectB) {
+          if (objectA.fields.Title < objectB.fields.Title) {
+            return -1;
+          } else if (objectA.fields.Title > objectB.fields.Title) {
+            return 1;
+          } else {
+            return 0;
+          }
+        });
         setTodoList([...(result.records || [])]);
+        setTodoList(result.records || []);
         setIsLoading(false);
       });
   }, []);
-
-  /*
-INPUT: Function that takes 2 parameters
-OUTPUT: Returns -1 if Title A < B, 0 if A = B, 1 if A > B
-NOTES: 
-*/
 
   // console.log(process.env.REACT_APP_AIRTABLE_API_KEY);
 
@@ -98,12 +84,12 @@ NOTES:
     <BrowserRouter>
       <Routes>
         <Route
-          path="/"
+          path="/new"
           exact
           element={
             <div className={style.container}>
               <header style={{ textAlign: "center" }}>
-                <h1 className={style.h1}>B's to do list</h1>
+                <h1 className={style.h1ToDoPage}>Your Celtic to do List</h1>
                 {/* ****************************************************** */}
                 {/* Instantiation of AddTodoForm */}
                 {/* "Change the value of the `onAddTodo` prop for `AddTodoForm` to `addTodo`" (Lesson 1-4) */}
@@ -119,7 +105,45 @@ NOTES:
             </div>
           }
         />
-        <Route path="/new" exact element={<h1>New Todo List</h1>} />
+        <Route
+          path="/"
+          exact
+          element={
+            <div className={style.container}>
+              <header style={{ textAlign: "center" }}>
+                <h1 className={style.h1HomePage}>
+                  <span className={style.headerPart1}>What do YOU</span> need to
+                  do?
+                </h1>
+                <hr className={style.hr}></hr>
+                <div className={style.subheaderAndQuoteContainer}>
+                  <h3 style={{ textAlign: "center" }} className={style.h3}>
+                    <span className={style.lineBreak}>
+                      Write it in{" "}
+                      <a
+                        href="http://localhost:3000/new"
+                        rel="noreferrer"
+                        className={style.appLink}
+                      >
+                        Your Celtic To Do List
+                      </a>
+                      , then{" "}
+                    </span>
+                    think of it like this old Irish saying:
+                  </h3>
+                  <blockquote className={style.quote}>
+                    <span className={style.lineBreak}>
+                      "Tell your cares to the birds & the bees. They will tell
+                      the leaves & the trees.{" "}
+                    </span>
+                    The leaves & the trees will bow to the breeze, & the breeze
+                    will blow them all away."
+                  </blockquote>
+                </div>
+              </header>
+            </div>
+          }
+        />
       </Routes>
     </BrowserRouter>
   );
