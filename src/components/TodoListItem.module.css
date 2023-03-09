@@ -9,6 +9,7 @@
   font-size: 2em;
   font-family: fantasy, serif;
   color: black;
+  /* margin-top: 1em; */
   margin-bottom: 0.0001em;
   padding-top: 1em;
 }
@@ -71,7 +72,6 @@
     margin-right: 10%;
     padding-top: 10px;
     padding-bottom: 10px;
-    background-color: rgba(211, 211, 211, 0.5);
   }
 }
 
@@ -82,6 +82,7 @@
   margin-left: 2.5%;
   margin-right: 2.5%;
   margin-bottom: 0.0001em;
+  color: rgba(0, 0, 0, 0.703);
 }
 
 /* Laptop styling  ********************/
