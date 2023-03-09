@@ -26,9 +26,11 @@ const AddTodoForm = ({ onAddTodo }) => {
     // Updated `onAddTodo` callback prop to pass Object instead of String w/following properties: 1) 'title`: equal to 'todoTitleValue'; 2) `id`: unique identifier (used `Date.now()` to generate unique number). Also used `Date.now()` as placeholder for unique number generation, but in future should not use (Lesson 1-4)
 
     // Previously below, invoked `onAddTodo` callback handler prop (which points to the App.js instantiation of this AddTodoForm component) & passed `todoTitle` as argument
-    const onAddTodoObject = { title: todoTitleValue, id: Date.now() };
 
-    onAddTodo(onAddTodoObject);
+    onAddTodo({
+      fields: { Title: todoTitleValue },
+      id: Date.now(),
+    });
 
     // Reset form after submission
     setTodoTitle("");
