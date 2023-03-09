@@ -38,17 +38,19 @@ function App() {
     )
       .then((resp) => resp.json())
       .then((result) => {
-        // Sort in descending order
-        result.records.sort(function (objectA, objectB) {
-          if (objectA.fields.Title < objectB.fields.Title) {
-            return -1;
-          } else if (objectA.fields.Title > objectB.fields.Title) {
-            return 1;
-          } else {
-            return 0;
-          }
-        });
-        setTodoList([...(result.records || [])]);
+        // Worked, but commented out so list is ordered by Airtable order
+
+        // // Sort in descending order
+        // result.records.sort(function (objectA, objectB) {
+        //   if (objectA.fields.Title < objectB.fields.Title) {
+        //     return -1;
+        //   } else if (objectA.fields.Title > objectB.fields.Title) {
+        //     return 1;
+        //   } else {
+        //     return 0;
+        //   }
+        // });
+        // setTodoList([...(result.records || [])]);
         setTodoList(result.records || []);
         setIsLoading(false);
       });
@@ -112,7 +114,7 @@ function App() {
             <div className={style.container}>
               <header style={{ textAlign: "center" }}>
                 <h1 className={style.h1HomePage}>
-                  <span className={style.headerPart1}>What do YOU</span> need to
+                  <span className={style.headerPart1}>What do you</span> NEED to
                   do?
                 </h1>
                 <hr className={style.hr}></hr>
@@ -129,12 +131,12 @@ function App() {
                       </a>
                       , then{" "}
                     </span>
-                    think of it like this old Irish saying:
+                    think of it like the old Irish saying,
                   </h3>
                   <blockquote className={style.quote}>
                     <span className={style.lineBreak}>
-                      "Tell your cares to the birds & the bees. They will tell
-                      the leaves & the trees.{" "}
+                      "<strong>Tell your cares to</strong> the birds & the bees.
+                      They will tell the leaves & the trees.{" "}
                     </span>
                     The leaves & the trees will bow to the breeze, & the breeze
                     will blow them all away."
