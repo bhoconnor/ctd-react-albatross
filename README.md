@@ -1,4 +1,4 @@
-# Screenshot
+# Screenshots
 
 See **main screen image below of website** side of To Do list sample:
 
