@@ -1,3 +1,13 @@
+# Screenshot
+
+See **main screen image below of website** side of To Do list sample:
+
+<img src="img/Screenshot1-site.png" alt="Website side of To Do list sample." Title="Click to enlarge" width="75%" height="75%"/>
+
+See **main screen image below of Airtable** side of To Do list sample:
+
+<img src="img/Screenshot2-airtable.png" alt="Airtable side of To Do list sample." Title="Click to enlarge" width="75%" height="75%"/>
+
 # Prerequisites
 
 Install Yarn [(details here)](https://classic.yarnpkg.com/en/docs/install)
